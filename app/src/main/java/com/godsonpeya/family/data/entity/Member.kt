@@ -8,5 +8,6 @@ class Member (
     @PrimaryKey(autoGenerate = true)
     var id: Long,
     var nom: String,
-    var prenom: String
+    var prenom: String,
+    var sex : String
 )
