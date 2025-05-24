@@ -70,8 +70,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.0")
     implementation("com.google.dagger:hilt-android:2.56.2")
     ksp("com.google.dagger:hilt-android-compiler:2.56.2")
-    implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("androidx.room:room-runtime:2.7.1")
     ksp("androidx.room:room-compiler:2.7.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.9.0")
 
 }

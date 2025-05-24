@@ -1,10 +1,7 @@
 package com.godsonpeya.family.navigation
 
 
-
-
-sealed class AppScreen(var route: String) {
-
+sealed class AppScreen(var route: String){
     data object Home: AppScreen("Register")
     data object Members : AppScreen("members")
 
