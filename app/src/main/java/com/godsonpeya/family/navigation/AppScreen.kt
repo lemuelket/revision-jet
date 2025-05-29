@@ -6,6 +6,6 @@ sealed class AppScreen(var route: String){
     data object Members : AppScreen("members")
 
     data object Details : AppScreen("Details/{memberId}") {
-        fun createRoute(memberId: Long) = "Details/$memberId"
+        fun createRoute(memberId: String) = "Details/$memberId"
     }
 }

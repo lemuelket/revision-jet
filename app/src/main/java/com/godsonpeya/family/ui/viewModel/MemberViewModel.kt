@@ -17,6 +17,10 @@ class MemberViewModel @Inject constructor(private val memberRepository: MemberRe
 
     val members: StateFlow<List<Member>> = _members
 
+    private var _member= MutableStateFlow<Member?>(null)
+
+    val member: StateFlow<Member?> = _member
+
     fun getAllMembers(){
         viewModelScope.launch {
            var allMembers= memberRepository.getAllMembers()
@@ -24,9 +28,9 @@ class MemberViewModel @Inject constructor(private val memberRepository: MemberRe
         }
     }
 
-    fun getMemberById(id:Long){
+    fun getMemberById(id: String){
         viewModelScope.launch {
-            memberRepository.getMemberById(id)
+            _member.value=memberRepository.getMemberById(id)
         }
     }
 
@@ -39,12 +43,14 @@ class MemberViewModel @Inject constructor(private val memberRepository: MemberRe
     fun updateMember(member: Member){
         viewModelScope.launch {
             memberRepository.updateMember(member)
+            getMemberById(member.id)
         }
     }
 
     fun deleteMember(member: Member){
         viewModelScope.launch {
-            memberRepository.deleMember(member)
+            memberRepository.deleteMember(member)
+            getAllMembers()
         }
     }
 }

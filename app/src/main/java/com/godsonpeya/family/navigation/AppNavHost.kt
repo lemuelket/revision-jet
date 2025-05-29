@@ -1,14 +1,16 @@
 package com.godsonpeya.family.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.godsonpeya.family.data.entity.Member
 import com.godsonpeya.family.ui.screens.HomeRegister
 import com.godsonpeya.family.ui.screens.MemberDetails
 import com.godsonpeya.family.ui.screens.MemberList
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun AppNavHost(navHostController: NavHostController) {
 
@@ -22,8 +24,8 @@ fun AppNavHost(navHostController: NavHostController) {
         }
 
         composable(route= AppScreen.Details.route) {navBackStack->
-           val memberId= navBackStack.arguments?.getLong("memberId")
-            MemberDetails(navHostController, memberId= memberId?:-1L)
+           val memberId= navBackStack.arguments?.getString("memberId")
+            MemberDetails(navHostController, memberId= memberId!!)
         }
     }
 }

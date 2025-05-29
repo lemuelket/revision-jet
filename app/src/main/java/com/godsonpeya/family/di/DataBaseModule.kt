@@ -1,7 +1,6 @@
 package com.godsonpeya.family.di
 
 import android.app.Application
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.room.Room
 import com.godsonpeya.family.data.AppDataBase
 import dagger.Module
@@ -18,7 +17,9 @@ object DataBaseModule {
     @Singleton
     @Provides
     fun provideDataBase(app: Application): AppDataBase{
-        return Room.databaseBuilder(app, AppDataBase::class.java,"family_db").build()
+        return Room.databaseBuilder(app, AppDataBase::class.java,"family_db")
+            .fallbackToDestructiveMigration(false)
+            .build()
     }
 
     @Singleton
